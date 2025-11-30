@@ -8,7 +8,7 @@
 
 1. Клонируйте репозиторий:
 ```
-git clone https://github.com/username/myblog.git
+git clone https://github.com/Apovikalov/ideal-enigma
 ```
 
 2. Установите зависимости:
@@ -36,5 +36,6 @@ python manage.py runserver
 Дополнительную информацию о структуре проекта и API можно найти в [документации](docs/README.md).
 
 ## Лицензия:
+
 
 Проект распространяется под [лицензией MIT](LICENSE).
