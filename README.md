@@ -37,5 +37,4 @@ python manage.py runserver
 
 ## Лицензия:
 
-
 Проект распространяется под [лицензией MIT](LICENSE).
