@@ -21,3 +21,4 @@ def get_date(date_and_time: str):
     complete_date += '.'
     complete_date += date_and_time[0:4]
     return complete_date
+
