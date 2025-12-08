@@ -13,3 +13,10 @@ def get_mask_card_number(card_number: str) -> str:
         masked += " "
         masked += card_number[-1]
     return masked
+
+
+def get_mask_account(account_number: str) -> str:
+    """Функция принимает на вход номер счёта и возвращает его маску"""
+    masked = "**"
+    masked += account_number[-4:]
+    return masked
