@@ -1,4 +1,7 @@
-def filter_by_currency(transactions: list, currency_name: str):
+from typing import Any, Generator
+
+
+def filter_by_currency(transactions: list, currency_name: str) -> Generator[Any, Any, None]:
     """возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной"""
     complete_transactions = []
     for transaction in transactions:
@@ -8,7 +11,7 @@ def filter_by_currency(transactions: list, currency_name: str):
         yield i
 
 
-def transaction_descriptions(transactions: list):
+def transaction_descriptions(transactions: list) -> Generator[Any, Any, None]:
     """принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
     desc_list = []
     for transaction in transactions:
@@ -17,7 +20,7 @@ def transaction_descriptions(transactions: list):
         yield i
 
 
-def card_number_generator(start: int, end: int):
+def card_number_generator(start: int, end: int) -> Generator[Any, Any, None]:
     """Генератор, который выдает номера банковских карт в формате XXXX XXXX XXXX XXXX."""
     for number in range(start, end + 1):
         # Форматируем номер с ведущими нулями, если это необходимо
