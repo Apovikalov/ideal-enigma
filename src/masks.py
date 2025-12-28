@@ -1,3 +1,7 @@
+import logging
+
+masks_logger = logging.getLogger("masks")
+
 def get_mask_card_number(card_number: int) -> str:
     """Функция принимает на вход номер карты и возвращает её маску"""
     masked = str(card_number)[0:4]
