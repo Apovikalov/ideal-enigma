@@ -1,6 +1,6 @@
 import pytest
 
-from widget import get_date, mask_account_card
+from src.widget import get_date, mask_account_card
 
 
 @pytest.mark.parametrize('card_number, complete_number',

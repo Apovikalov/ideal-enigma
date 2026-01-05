@@ -1,6 +1,6 @@
 import pytest
 
-from decorators import log
+from src.decorators import log
 
 
 # Пример функции для тестирования

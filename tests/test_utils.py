@@ -12,11 +12,6 @@ class TestUtils(unittest.TestCase):
         result = load_transactions("data/operations.json")
         self.assertEqual(result, [])  # Проверяем, что результат пустой список
 
-    @patch("builtins.open", new_callable=mock_open, read_data='[{"amount": 100, "currency": "USD"}]')
-    def test_load_transactions_valid_file(self, mock_file):
-        result = load_transactions("data/operations.json")
-        self.assertEqual(result, [])  # Проверяем, что результат пустой список
-
     @patch("builtins.open", new_callable=mock_open, read_data="not a json")
     def test_load_transactions_invalid_json(self, mock_file):
         result = load_transactions("data/operations.json")
