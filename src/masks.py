@@ -1,15 +1,22 @@
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """Функция принимает на вход номер карты и возвращает её маску"""
-    masked = str(card_number)[0:4]
-    masked += " "
-    masked += str(card_number)[4:6]
-    masked += "** **** "
-    masked += str(card_number)[-4:]
+    if len(card_number) == 16:
+        masked = card_number[0:4]
+        masked += " "
+        masked += card_number[4:6]
+        masked += "** **** "
+        masked += card_number[-4:]
+    elif len(card_number) == 13:
+        masked = card_number[0:6]
+        masked += "***"
+        masked += card_number[-4:-1]
+        masked += " "
+        masked += card_number[-1]
     return masked
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """Функция принимает на вход номер счёта и возвращает его маску"""
     masked = "**"
-    masked += str(account_number)[-4:]
+    masked += account_number[-4:]
     return masked
