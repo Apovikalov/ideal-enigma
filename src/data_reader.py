@@ -28,9 +28,22 @@ def read_transactions_from_csv(file_path: str) -> List[Dict]:
         logger.error(f"Файл {file_path} не найден.")
         raise FileNotFoundError(f"Файл {file_path} не найден.")
     try:
-        df = pd.read_csv(file_path)
-        transactions = df.to_dict(orient="records")
-        logger.info(f"Успешно считано {len(transactions)} транзакций из файла: {file_path}")
+        df = pd.read_csv(file_path, sep=",")
+        transactions = []
+        for _, row in df.iterrows():
+            transaction = {
+                "id": str(row["id"]),  # Преобразуем id в строку
+                "state": row["state"],
+                "date": row["date"],
+                "operationAmount": {
+                    "amount": row["amount"],
+                    "currency": {"name": row["currency_name"], "code": row["currency_code"]},
+                },
+                "from": row["from"],
+                "to": row["to"],
+                "description": row["description"],
+            }
+            transactions.append(transaction)
         return transactions
     except Exception as e:
         logger.error(f"Ошибка при чтении файла {file_path}: {e}")
@@ -44,8 +57,21 @@ def read_transactions_from_excel(file_path: str) -> List[Dict]:
         raise FileNotFoundError(f"Файл {file_path} не найден.")
     try:
         df = pd.read_excel(file_path)
-        transactions = df.to_dict(orient="records")
-        logger.info(f"Успешно считано {len(transactions)} транзакций из файла: {file_path}")
+        transactions = []
+        for _, row in df.iterrows():
+            transaction = {
+                "id": row["id"],
+                "state": row["state"],
+                "date": row["date"],
+                "operationAmount": {
+                    "amount": row["amount"],
+                    "currency": {"name": row["currency_name"], "code": row["currency_code"]},
+                },
+                "from": row["from"],
+                "to": row["to"],
+                "description": row["description"],
+            }
+            transactions.append(transaction)
         return transactions
     except Exception as e:
         logger.error(f"Ошибка при чтении файла {file_path}: {e}")

@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 
 def process_bank_search(data: list[dict], search: str) -> list[dict]:
@@ -10,10 +11,8 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
 def process_bank_operations(data: list[dict], categories: list) -> dict:
     """Принимает список словарей с данными об операциях и список категорий операций,
     а возвращает словарь с названиями категорий и количеством операций в каждой из них"""
-    result = {category: 0 for category in categories}
+    descriptions = []
     for item in data:
-        description = item.get('description', '')
-        for category in categories:
-            if category.lower() in description.lower():
-                result[category] += 1
-    return result
+        descriptions.append(item.get('description', ''))
+    counted = Counter(descriptions)
+    return counted

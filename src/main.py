@@ -1,14 +1,15 @@
 import json
 import logging
 import os
-import re
+# import re
 from datetime import datetime
 
-import pandas as pd
-
-# from src.data_reader import filter_transactions
 # from src.utils import load_transactions
 from src.config import DATA_DIR, LOG_DIR
+from src.data_reader import filter_transactions, read_transactions_from_csv, read_transactions_from_excel
+
+# import pandas as pd
+
 
 # Настройка логирования
 logging.basicConfig(
@@ -31,49 +32,11 @@ def load_transactions(file_path: str):
             logger.error(f"Ошибка декодирования JSON в файле {file_path}: {e}")
             raise
     elif file_path.endswith(".csv"):
-        try:
-            df = pd.read_csv(file_path, sep=",")
-            transactions = []
-            for _, row in df.iterrows():
-                transaction = {
-                    "id": str(row["id"]),  # Преобразуем id в строку
-                    "state": row["state"],
-                    "date": row["date"],
-                    "operationAmount": {
-                        "amount": row["amount"],
-                        "currency": {"name": row["currency_name"], "code": row["currency_code"]},
-                    },
-                    "from": row["from"],
-                    "to": row["to"],
-                    "description": row["description"],
-                }
-                transactions.append(transaction)
-            return transactions
-        except Exception as e:
-            logger.error(f"Ошибка при загрузке файла CSV {file_path}: {e}")
-            raise
+        transactions = read_transactions_from_csv(file_path)
+        return transactions
     elif file_path.endswith(".xlsx"):
-        try:
-            df = pd.read_excel(file_path)
-            transactions = []
-            for _, row in df.iterrows():
-                transaction = {
-                    "id": row["id"],
-                    "state": row["state"],
-                    "date": row["date"],
-                    "operationAmount": {
-                        "amount": row["amount"],
-                        "currency": {"name": row["currency_name"], "code": row["currency_code"]},
-                    },
-                    "from": row["from"],
-                    "to": row["to"],
-                    "description": row["description"],
-                }
-                transactions.append(transaction)
-            return transactions
-        except Exception as e:
-            logger.error(f"Ошибка при загрузке файла Excel {file_path}: {e}")
-            raise
+        transactions = read_transactions_from_excel(file_path)
+        return transactions
     else:
         logger.error(f"Неподдерживаемый формат файла: {file_path}")
         raise ValueError("Unsupported file format")
@@ -98,27 +61,6 @@ def format_transaction(transaction):
     output += f"{from_account} -> {to_account}\n"
     output += f"Сумма: {amount} {currency}\n"
     return output
-
-
-def filter_transactions(transactions, search_string):
-    """Фильтрует список транзакций по строке в описании."""
-    # Если строка поиска пустая, возвращаем все транзакции
-    if not search_string:
-        return transactions
-
-    # Создаем регулярное выражение для поиска с учетом регистра
-    search_pattern = re.compile(re.escape(search_string), re.IGNORECASE)
-
-    filtered = []
-
-    for transaction in transactions:
-        description = transaction["description"]
-        print(f"Checking description: {description}")  # Отладочное сообщение
-        # Проверяем наличие паттерна в описании
-        if search_pattern.search(description):
-            filtered.append(transaction)
-
-    return filtered
 
 
 def mask_account(account_number: str) -> str:
