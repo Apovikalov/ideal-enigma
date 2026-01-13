@@ -5,9 +5,9 @@ from src.masks import get_mask_account, get_mask_card_number
 
 @pytest.mark.parametrize('card_number, masked',
                          [('7000792289606361', '7000 79** **** 6361'),
-                          ('1234567890123456', '1234 56** **** 3456'),
+                          ('Maestro 1234567890123456', 'Maestro 1234 56** **** 3456'),
                           ('7000799606361', '700079***636 1'),
-                          ('1234567890123', '123456***012 3')])
+                          ('Visa 1234567890123', 'Visa 123456***012 3')])
 def test_get_mask_card_number(card_number, masked):
     result = get_mask_card_number(card_number)
     assert (result == masked)

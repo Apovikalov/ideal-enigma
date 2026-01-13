@@ -13,6 +13,7 @@ def process_bank_operations(data: list[dict], categories: list) -> dict:
     а возвращает словарь с названиями категорий и количеством операций в каждой из них"""
     descriptions = []
     for item in data:
-        descriptions.append(item.get('description', ''))
+        if item.get('description', '') in categories:
+            descriptions.append(item.get('description', ''))
     counted = Counter(descriptions)
     return counted
