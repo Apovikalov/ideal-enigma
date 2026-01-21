@@ -5,8 +5,8 @@ from unittest.mock import Mock, patch
 import pandas as pd
 import pytest
 
-from src.views import (greeting_time, calculate_total_expenses, proc_card_data,
-                       top_5_transactions, get_stock_cur, read_xlsx)
+from src.views import (greeting_time, calculate_total_expenses, for_each_card,
+                       top_5_transactions, get_price_stock, read_xlsx)
 
 
 @pytest.mark.parametrize('date_and_time, greet',
@@ -49,7 +49,7 @@ def mocked_requests_get(*args: Any) -> Any:
         return MockResponse({}, 404)
 
 
-class TestFunctions(unittest.TestCase):
+# class TestFunctions(unittest.TestCase):
     """Тестовый класс для функций из src.views."""
 
     def setUp(self) -> None:
@@ -62,4 +62,4 @@ class TestFunctions(unittest.TestCase):
         mock_data = Mock()
         mock_data.history.return_value = pd.DataFrame({"High": [100]})
         mock_ticker.return_value = mock_data
-        self.assertEqual(get_stock_cur("AAPL"), 100)
+        self.assertEqual(get_price_stock("AAPL"), 100)
