@@ -91,7 +91,8 @@ def top_5_transactions(my_list: list) -> list:
     for i in my_list:
         for k, v in all_transactions.items():
             if k == i["Категория"] and v == float(str(i["Сумма платежа"])[1:]):
-                result.append({"date": i["Дата платежа"], "amount": v, "category": k, "description": i["Описание"]})
+                result.append({"date": i["Дата платежа"].strftime('%d.%m.%Y'),
+                               "amount": v, "category": k, "description": i["Описание"]})
     logger.info("Окончание работы функции (top_five_transaction)")
 
     return result

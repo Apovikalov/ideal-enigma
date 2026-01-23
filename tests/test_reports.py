@@ -20,7 +20,5 @@ def test_report(fix_reports):
     assert result_spend[0] == fix_reports[0]
 
 
-# def test_reports():
-    # assert spending_by_category(result_read, "Переводы") == []
-    # assert spending_by_category(result_read, "Красота") == []
+def test_reports():
     assert spending_by_category(result_read, "sdfsf") == []
