@@ -1,5 +1,6 @@
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 
 from src.utils import read_xlsx
@@ -21,11 +22,8 @@ data_frame = read_xlsx(file_path)
 def main(date: str, df_transactions, stocks: list, currency: list):
     """Функция создающая JSON ответ для страницы главная"""
     logger.info("Начало работы главной функции (main)")
-    user_input = input(
-        "Введите date и time в формате YYYY-MM-DD HH:MM:SS или нажмите Enter для использования на вашем устройстве:"
-    )
     final_list = filter_by_date(date, df_transactions)
-    greeting = greeting_time(user_input if user_input else None)
+    greeting = greeting_time(datetime.now())
     cards = for_each_card(final_list)
     top_trans = top_5_transactions(final_list)
     stocks_prices = get_price_stock(stocks)

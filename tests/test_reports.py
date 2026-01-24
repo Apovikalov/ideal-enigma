@@ -21,4 +21,5 @@ def test_report(fix_reports):
 
 
 def test_reports():
+    assert spending_by_category(result_read, "Красота") == []
     assert spending_by_category(result_read, "sdfsf") == []

@@ -44,11 +44,11 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
             if i["Категория"] == category:
                 list_by_category.append(i)
         for i in list_by_category:
-            if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
+            if i["Дата платежа"] == "NaT" or type(i["Дата платежа"]) is float:
                 continue
             elif (
                     date_start
-                    <= datetime.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
+                    <= datetime.datetime.strptime(str(i["Дата платежа"]), "%Y-%m-%d %H:%M:%S")
                     <= date_start + datetime.timedelta(days=90)
             ):
                 final_list.append(i["Сумма платежа"])
@@ -72,6 +72,6 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
                 if date_start <= date_obj_ <= date_start + datetime.timedelta(days=90):
                     final_list.append(i["Сумма платежа"])
         logger.info("Завершение работы функции")
-        data_json = json.dumps(final_list, indent=4, ensure_ascii=False, )
+        data_json = json.dumps(final_list, indent=4, default=str, ensure_ascii=False, )
 
         return data_json
