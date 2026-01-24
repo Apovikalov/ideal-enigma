@@ -111,7 +111,6 @@ def currency_rates(currency: list) -> list[dict]:
         result.append({"currency": i, "rate": round(body_dict["conversion_rates"]["RUB"], 2)})
 
     logger.info("Создание списка словарей для функции - currency_rates")
-
     logger.info("Окончание работы функции - currency_rates")
     return result
 
