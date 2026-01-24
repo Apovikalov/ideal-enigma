@@ -1,22 +1,28 @@
 import os
-import unittest
+# import unittest
 from pathlib import Path
-from typing import Any
-from unittest.mock import Mock, patch
+# from typing import Any
+from unittest.mock import patch
 
+# import pandas as pd
+import pytest
 from dotenv import load_dotenv
 
-import pandas as pd
-import pytest
+from src.utils import read_xlsx
+from src.views import calculate_total_expenses, for_each_card, get_price_stock, greeting_time, top_5_transactions
 
-from src.views import (greeting_time, calculate_total_expenses, for_each_card,
-                       top_5_transactions, get_price_stock, read_xlsx, currency_rates)
+# from unittest.mock import Mock
+
+
+
+# from src.views import currency_rates
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
 load_dotenv()
 API_KEY_CUR = os.getenv("API_KEY_CUR")
 my_list = read_xlsx(file_path)
 empty_list = []
+
 
 @pytest.mark.parametrize('date_and_time, greet',
                          [('2024-03-11 02:26:18', 'Доброй ночи!'),
@@ -26,6 +32,7 @@ empty_list = []
 def test_greeting_time(date_and_time, greet):
     result = greeting_time(date_and_time)
     assert (result == greet)
+
 
 @pytest.mark.parametrize('transactions_sum, total_expenses',
                          [([{'name': '1', 'Сумма платежа': -2.3},
@@ -37,6 +44,7 @@ def test_calculate_total_expenses(transactions_sum, total_expenses):
     result = calculate_total_expenses(transactions_sum)
     assert (result == total_expenses)
 
+
 def test_for_each_card():
     """Тестирование функции, создающей информацию по каждой карте, в обычном режиме"""
     assert for_each_card(my_list) == [{'last_digits': '7197', 'total_spent': 2504514.54, 'cashback': 25045.15},
@@ -47,9 +55,11 @@ def test_for_each_card():
                                       {'last_digits': '6002', 'total_spent': 69200.0, 'cashback': 692.0},
                                       {'last_digits': '5441', 'total_spent': 470854.8, 'cashback': 4708.55}]
 
+
 def test_for_each_card_emp_att():
     """Тестирование функции, создающей информацию по каждой карте, с пустым списком"""
     assert for_each_card(empty_list) == []
+
 
 def test_top_5_transactions():
     """Тестирование функции для получения топ-5 транзакций по сумме платежа, в обычном режиме"""

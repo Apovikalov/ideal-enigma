@@ -7,6 +7,8 @@ from src.utils import read_xlsx
 from src.views import (greeting_time, calculate_total_expenses, for_each_card, top_5_transactions,
                        currency_rates, get_price_stock, filter_by_date)
 
+# from src.views import calculate_total_expenses
+
 logger = logging.getLogger("utils.log")
 file_handler = logging.FileHandler("main.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
