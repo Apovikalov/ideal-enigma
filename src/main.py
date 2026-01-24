@@ -4,8 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.utils import read_xlsx
-from src.views import (greeting_time, calculate_total_expenses, for_each_card, top_5_transactions,
-                       currency_rates, get_price_stock, filter_by_date)
+from src.views import currency_rates, filter_by_date, for_each_card, get_price_stock, greeting_time, top_5_transactions
 
 logger = logging.getLogger("utils.log")
 file_handler = logging.FileHandler("main.log", "w")
@@ -30,12 +29,12 @@ def main(date: str, df_transactions, stocks: list, currency: list):
     currency_r = currency_rates(currency)
     logger.info("Создание JSON ответа")
     result = [{
-            "greeting": greeting,
-            "cards": cards,
-            "top_transactions": top_trans,
-            "currency_rates": currency_r,
-            "stock_prices": stocks_prices,
-        }]
+        "greeting": greeting,
+        "cards": cards,
+        "top_transactions": top_trans,
+        "currency_rates": currency_r,
+        "stock_prices": stocks_prices,
+    }]
     date_json = json.dumps(
         result,
         indent=4,

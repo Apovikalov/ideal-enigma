@@ -1,17 +1,15 @@
+import datetime
 import json
 import logging
 import os
 import urllib.request
-from typing import Any, Dict, List
 from datetime import datetime
-import datetime
+from typing import Any, Dict, List
 
 import requests
 from dotenv import load_dotenv
 
-from src.utils import read_json, read_xlsx, write_json
-
-load_dotenv() # Получение API ключа из моего окружения
+load_dotenv()  # Получение API ключа из моего окружения
 API_KEY_CUR = os.getenv("API_KEY_CUR")
 
 SP_500_API_KEY = os.getenv("SP_500_API_KEY")
@@ -22,6 +20,7 @@ file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
+
 
 def greeting_time(date_and_time: Any):
     """Принимает строку с датой и временем в формате YYYY-MM-DD HH:MM:SS
