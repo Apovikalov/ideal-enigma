@@ -13,8 +13,6 @@ from src.views import calculate_total_expenses, for_each_card, get_price_stock, 
 
 # from unittest.mock import Mock
 
-
-
 # from src.views import currency_rates
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
