@@ -5,9 +5,9 @@ from pathlib import Path
 
 from src.utils import read_xlsx
 from src.views import (greeting_time, for_each_card, top_5_transactions,
-                       currency_rates, get_price_stock, filter_by_date)
+                       get_price_stock, filter_by_date)
 
-# from src.views import calculate_total_expenses
+# from src.views import calculate_total_expenses, currency_rates
 
 logger = logging.getLogger("utils.log")
 file_handler = logging.FileHandler("main.log", "w")
@@ -29,13 +29,13 @@ def main(date: str, df_transactions, stocks: list, currency: list):
     cards = for_each_card(final_list)
     top_trans = top_5_transactions(final_list)
     stocks_prices = get_price_stock(stocks)
-    currency_r = currency_rates(currency)
+    # currency_r = currency_rates(currency)
     logger.info("Создание JSON ответа")
     result = [{
         "greeting": greeting,
         "cards": cards,
         "top_transactions": top_trans,
-        "currency_rates": currency_r,
+        # "currency_rates": currency_r,
         "stock_prices": stocks_prices,
     }]
     date_json = json.dumps(
@@ -45,6 +45,3 @@ def main(date: str, df_transactions, stocks: list, currency: list):
     )
     logger.info("Завершение работы главной функции (main)")
     return date_json
-
-print(main("2021.11.30", "../data/operations.xlsx", ["AAPL"],
-               ["USD", "EUR"]))
