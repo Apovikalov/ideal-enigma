@@ -45,3 +45,6 @@ def main(date: str, df_transactions, stocks: list, currency: list):
     )
     logger.info("Завершение работы главной функции (main)")
     return date_json
+
+print(main("2021.11.30", "../data/operations.xlsx", ["AAPL"],
+               ["USD", "EUR"]))
