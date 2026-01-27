@@ -4,8 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.utils import read_xlsx
-from src.views import (greeting_time, for_each_card, top_5_transactions,
-                       get_price_stock, filter_by_date)
+from src.views import filter_by_date, for_each_card, get_price_stock, greeting_time, top_5_transactions
 
 # from src.views import calculate_total_expenses, currency_rates
 
