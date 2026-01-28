@@ -20,15 +20,15 @@ data_frame = read_xlsx(file_path)
 # data_frame = read_excel("../data/operations.xlsx")
 
 
-def main(date: str, df_transactions, stocks: list, currency: list):
+def main(date: str):
     """Функция создающая JSON ответ для страницы главная"""
     logger.info("Начало работы главной функции (main)")
-    final_list = filter_by_date(date, df_transactions)
+    final_list = filter_by_date(date, "../data/operations.xlsx")
     greeting = greeting_time(datetime.now())
     cards = for_each_card(final_list)
     top_trans = top_5_transactions(final_list)
-    stocks_prices = get_price_stock(stocks)
-    # currency_r = currency_rates(currency)
+    stocks_prices = get_price_stock(["AAPL"])
+    # currency_r = currency_rates(["USD", "EUR"])
     logger.info("Создание JSON ответа")
     result = [{
         "greeting": greeting,
