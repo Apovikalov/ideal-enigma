@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import json
 import logging
 import os
@@ -29,9 +29,9 @@ def greeting_time(date_and_time: Any):
     и возвращает приветствие с соответствующим временем суток."""
     if date_and_time is None:
         date_and_time = datetime.now()
-        hours = date_and_time.hour
-    else:
-        hours = int(date_and_time[11:13])
+    elif type(date_and_time) is str:
+        date_and_time = datetime.strptime(date_and_time, "%Y-%m-%d %H:%M:%S")
+    hours = date_and_time.hour
     greet = ""
     if 0 <= hours <= 5:
         greet = "Доброй ночи!"
@@ -142,15 +142,16 @@ def filter_by_date(date: str, my_list: list) -> list:
     if date == "":
         return list_by_date
     year, month, day = int(date[0:4]), int(date[5:7]), int(date[8:10])
-    date_obj = datetime.datetime(year, month, day)
+    date_obj = dt.datetime(year, month, day)
     for i in my_list:
-        if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
-            continue
-        elif (
-                date_obj
-                >= datetime.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
-                >= date_obj - datetime.timedelta(days=day - 1)
-        ):
-            list_by_date.append(i)
+        if type(i) is dict:
+            if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
+                continue
+            elif (
+                    date_obj
+                    >= dt.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
+                    >= date_obj - dt.timedelta(days=day - 1)
+            ):
+                list_by_date.append(i)
     logger.info("Конец работы функции (filter_by_date)")
     return list_by_date

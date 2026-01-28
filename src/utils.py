@@ -39,7 +39,7 @@ def read_xlsx(file_path: str) -> Any:
 def write_json(file_path: str, data: Any) -> None:
     """Запись данных в формате json в файл"""
     with open(file_path, "w", encoding="utf-8") as f:
-        if type(data) == str:
+        if type(data) is str:
             data.isoformat()
         json.dump(data, f, indent=4, ensure_ascii=False)
 

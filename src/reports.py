@@ -36,7 +36,6 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
     logger.info("Начало работы")
     list_by_category = []
     final_list = []
-
     if date is None:
         logger.info("Обработка условия на отсутствие")
         date_start = datetime.datetime.now() - datetime.timedelta(days=90)
