@@ -9,11 +9,10 @@ import pytest
 from dotenv import load_dotenv
 
 from src.utils import read_xlsx
-from src.views import calculate_total_expenses, for_each_card, get_price_stock, greeting_time, top_5_transactions
+from src.views import (calculate_total_expenses, currency_rates, for_each_card, get_price_stock,
+                       greeting_time, top_5_transactions)
 
 # from unittest.mock import Mock
-
-# from src.views import currency_rates
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
 load_dotenv()
@@ -52,6 +51,13 @@ def test_for_each_card():
                                       {'last_digits': '5507', 'total_spent': 84000.0, 'cashback': 840.0},
                                       {'last_digits': '6002', 'total_spent': 69200.0, 'cashback': 692.0},
                                       {'last_digits': '5441', 'total_spent': 470854.8, 'cashback': 4708.55}]
+
+
+def test_currency_rates():
+    """Тестирование функции, возвращающей курс валют"""
+    assert currency_rates(["USD", "EUR"]) == [{"currency": "USD", "rate": 87.001605},
+                                              {"currency": "EUR", "rate": 94.067987}]
+
 
 
 def test_for_each_card_emp_att():

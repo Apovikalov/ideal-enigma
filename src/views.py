@@ -23,6 +23,9 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
+with open("C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
 
 def greeting_time(date_and_time: Any):
     """Принимает строку с датой и временем в формате YYYY-MM-DD HH:MM:SS
@@ -103,14 +106,11 @@ def top_5_transactions(my_list: list) -> list:
 def currency_rates(currency: list) -> list[dict]:
     """Функция запроса курса валют"""
     logger.info("Начало работы функции (currency_rates)")
-    api_key = API_KEY_CUR
     result = []
     for i in currency:
-        url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/{i}"
-        with urllib.request.urlopen(url) as response:
-            body_json = response.read()
-        body_dict = json.loads(body_json)
-        result.append({"currency": i, "rate": round(body_dict["conversion_rates"]["RUB"], 2)})
+        for j in range(len(data["currency_rates"])):
+            if data["currency_rates"][j]["currency"] == i:
+                result.append({"currency": i, "rate": data["currency_rates"][j]["rate"]})
 
     logger.info("Создание списка словарей для функции - currency_rates")
 
