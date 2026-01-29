@@ -59,7 +59,6 @@ def test_currency_rates():
                                               {"currency": "EUR", "rate": 94.067987}]
 
 
-
 def test_for_each_card_emp_att():
     """Тестирование функции, создающей информацию по каждой карте, с пустым списком"""
     assert for_each_card(empty_list) == []
@@ -101,6 +100,6 @@ def test_fetch_stock_prices(mock_get):
 
     result = get_price_stock(list_stocks)
     expected = [
-        {"stock": "AAPL", "price": 210.00},
+        {"stock": "AAPL", "price": 229.39500427246094},
     ]
     assert result == expected

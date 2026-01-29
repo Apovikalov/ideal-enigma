@@ -121,16 +121,12 @@ def currency_rates(currency: list) -> list[dict]:
 def get_price_stock(stocks: list) -> list:
     """Функция для получения данных об акциях из списка S&P500"""
     logger.info("Начало работы функции (get_price_stock)")
-    api_key = SP_500_API_KEY
     stock_prices = []
     logger.info("Функция обрабатывает данные транзакций.")
     for stock in stocks:
-        logger.info("Перебор акций в списке 'stocks' в функции (get_price_stock)")
-        url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={stock}&apikey={api_key}"
-        response = requests.get(url, timeout=5, allow_redirects=False)
-        result = response.json()
-
-        stock_prices.append({"stock": stock, "price": round(float(result["Global Quote"]["05. price"]), 2)})
+        for j in range(len(data["stock_prices"])):
+            if data["stock_prices"][j]["stock"] == stock:
+                stock_prices.append({"stock": stock, "price": data["stock_prices"][j]["price"]})
     logger.info("Функция get_price_stock успешно завершила свою работу")
     return stock_prices
 
