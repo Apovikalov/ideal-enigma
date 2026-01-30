@@ -4,8 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.utils import read_xlsx
-from src.views import (filter_by_date, for_each_card, get_price_stock,
-                       greeting_time, top_5_transactions, currency_rates)
+from src.views import currency_rates, filter_by_date, for_each_card, get_price_stock, greeting_time, top_5_transactions
 
 # from src.views import calculate_total_expenses
 
@@ -20,7 +19,7 @@ file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xl
 data_frame = read_xlsx(file_path)
 # data_frame = read_excel("../data/operations.xlsx")
 
-with open("C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
+with open(r"C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 currencies = []

@@ -2,11 +2,11 @@ import datetime as dt
 import json
 import logging
 import os
-import urllib.request
+# import urllib.request
 from datetime import datetime
 from typing import Any, Dict, List
 
-import requests
+# import requests
 from dotenv import load_dotenv
 
 # from src.utils import read_json, read_xlsx, write_json
@@ -23,7 +23,7 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
-with open("C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
+with open(r"C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 

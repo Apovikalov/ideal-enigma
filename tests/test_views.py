@@ -9,8 +9,8 @@ import pytest
 from dotenv import load_dotenv
 
 from src.utils import read_xlsx
-from src.views import (calculate_total_expenses, currency_rates, for_each_card, get_price_stock,
-                       greeting_time, top_5_transactions)
+from src.views import (calculate_total_expenses, currency_rates, for_each_card, get_price_stock, greeting_time,
+                       top_5_transactions)
 
 # from unittest.mock import Mock
 
