@@ -1,12 +1,12 @@
-import datetime
+import datetime as dt
 import json
 import logging
 import os
-import urllib.request
+# import urllib.request
 from datetime import datetime
 from typing import Any, Dict, List
 
-import requests
+# import requests
 from dotenv import load_dotenv
 
 # from src.utils import read_json, read_xlsx, write_json
@@ -23,15 +23,18 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
+with open(r"C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
 
 def greeting_time(date_and_time: Any):
     """Принимает строку с датой и временем в формате YYYY-MM-DD HH:MM:SS
     и возвращает приветствие с соответствующим временем суток."""
     if date_and_time is None:
         date_and_time = datetime.now()
-        hours = date_and_time.hour
-    else:
-        hours = int(date_and_time[11:13])
+    elif type(date_and_time) is str:
+        date_and_time = datetime.strptime(date_and_time, "%Y-%m-%d %H:%M:%S")
+    hours = date_and_time.hour
     greet = ""
     if 0 <= hours <= 5:
         greet = "Доброй ночи!"
@@ -103,14 +106,11 @@ def top_5_transactions(my_list: list) -> list:
 def currency_rates(currency: list) -> list[dict]:
     """Функция запроса курса валют"""
     logger.info("Начало работы функции (currency_rates)")
-    api_key = API_KEY_CUR
     result = []
     for i in currency:
-        url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/{i}"
-        with urllib.request.urlopen(url) as response:
-            body_json = response.read()
-        body_dict = json.loads(body_json)
-        result.append({"currency": i, "rate": round(body_dict["conversion_rates"]["RUB"], 2)})
+        for j in range(len(data["currency_rates"])):
+            if data["currency_rates"][j]["currency"] == i:
+                result.append({"currency": i, "rate": data["currency_rates"][j]["rate"]})
 
     logger.info("Создание списка словарей для функции - currency_rates")
 
@@ -121,16 +121,12 @@ def currency_rates(currency: list) -> list[dict]:
 def get_price_stock(stocks: list) -> list:
     """Функция для получения данных об акциях из списка S&P500"""
     logger.info("Начало работы функции (get_price_stock)")
-    api_key = SP_500_API_KEY
     stock_prices = []
     logger.info("Функция обрабатывает данные транзакций.")
     for stock in stocks:
-        logger.info("Перебор акций в списке 'stocks' в функции (get_price_stock)")
-        url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={stock}&apikey={api_key}"
-        response = requests.get(url, timeout=5, allow_redirects=False)
-        result = response.json()
-
-        stock_prices.append({"stock": stock, "price": round(float(result["Global Quote"]["05. price"]), 2)})
+        for j in range(len(data["stock_prices"])):
+            if data["stock_prices"][j]["stock"] == stock:
+                stock_prices.append({"stock": stock, "price": data["stock_prices"][j]["price"]})
     logger.info("Функция get_price_stock успешно завершила свою работу")
     return stock_prices
 
@@ -142,15 +138,16 @@ def filter_by_date(date: str, my_list: list) -> list:
     if date == "":
         return list_by_date
     year, month, day = int(date[0:4]), int(date[5:7]), int(date[8:10])
-    date_obj = datetime.datetime(year, month, day)
+    date_obj = dt.datetime(year, month, day)
     for i in my_list:
-        if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
-            continue
-        elif (
-                date_obj
-                >= datetime.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
-                >= date_obj - datetime.timedelta(days=day - 1)
-        ):
-            list_by_date.append(i)
+        if type(i) is dict:
+            if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
+                continue
+            elif (
+                    date_obj
+                    >= dt.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
+                    >= date_obj - dt.timedelta(days=day - 1)
+            ):
+                list_by_date.append(i)
     logger.info("Конец работы функции (filter_by_date)")
     return list_by_date

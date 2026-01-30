@@ -4,8 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.utils import read_xlsx
-from src.views import (greeting_time, calculate_total_expenses, for_each_card, top_5_transactions,
-                       currency_rates, get_price_stock, filter_by_date)
+from src.views import currency_rates, filter_by_date, for_each_card, get_price_stock, greeting_time, top_5_transactions
 
 # from src.views import calculate_total_expenses
 
@@ -20,24 +19,35 @@ file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xl
 data_frame = read_xlsx(file_path)
 # data_frame = read_excel("../data/operations.xlsx")
 
+with open(r"C:\PythonProject1\settings.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-def main(date: str, df_transactions, stocks: list, currency: list):
+currencies = []
+for i in range(len(data["currency_rates"])):
+    currencies.append(data["currency_rates"][i]["currency"])
+
+stocks = []
+for i in range(len(data["stock_prices"])):
+    stocks.append(data["stock_prices"][i]["stock"])
+
+
+def main(date: str):
     """Функция создающая JSON ответ для страницы главная"""
     logger.info("Начало работы главной функции (main)")
-    final_list = filter_by_date(date, df_transactions)
+    final_list = filter_by_date(date, "../data/operations.xlsx")
     greeting = greeting_time(datetime.now())
     cards = for_each_card(final_list)
     top_trans = top_5_transactions(final_list)
     stocks_prices = get_price_stock(stocks)
-    currency_r = currency_rates(currency)
+    currency_r = currency_rates(currencies)
     logger.info("Создание JSON ответа")
     result = [{
-            "greeting": greeting,
-            "cards": cards,
-            "top_transactions": top_trans,
-            "currency_rates": currency_r,
-            "stock_prices": stocks_prices,
-        }]
+        "greeting": greeting,
+        "cards": cards,
+        "top_transactions": top_trans,
+        "currency_rates": currency_r,
+        "stock_prices": stocks_prices,
+    }]
     date_json = json.dumps(
         result,
         indent=4,
