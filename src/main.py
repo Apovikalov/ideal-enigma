@@ -30,6 +30,7 @@ if __name__ == "__main__":
     print(len(category1.products))
     print(category1.category_count)
     print(category1.product_count)
+    print(category1.products_list)
 
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category2 = Category("Телевизоры",
