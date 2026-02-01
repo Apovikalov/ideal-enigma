@@ -16,17 +16,28 @@ def test_init_product(product_1):
 
 
 @pytest.fixture
-def category_2():
-    return Category("Телевизоры",
-                    "Современный телевизор, который позволяет наслаждаться просмотром, "
-                    "станет вашим другом и помощником",
-                    ["product4", "product5", "product6"])
+def category_1():
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    return Category("Смартфоны",
+                    "Смартфоны, как средство не только коммуникации, "
+                    "но и получения дополнительных функций для удобства жизни",
+                    [product1])
 
 
-def test_init_category(category_2):
-    assert category_2.name == "Телевизоры"
-    assert category_2.description == ("Современный телевизор, который позволяет наслаждаться просмотром, "
-                                      "станет вашим другом и помощником")
-    assert category_2.products == ["product4", "product5", "product6"]
-    assert category_2.category_count == 1
-    assert category_2.product_count == 3
+def test_init_category(category_1):
+    assert category_1.name == "Смартфоны"
+    assert category_1.description == ("Смартфоны, как средство не только коммуникации, "
+                                      "но и получения дополнительных функций для удобства жизни")
+    assert category_1.products == ['Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.']
+    assert category_1.category_count == 1
+    assert category_1.product_count == 1
+
+
+def test_add_product(category_1: Category):
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    assert len(category_1.products) == 1
+    category_1.add_product(product2)
+    assert len(category_1.products) == 2
+
+# def test_new_product
