@@ -11,6 +11,9 @@ class Product:
         self.price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
 
 class Category:
     """Класс для представления категории"""
@@ -26,3 +29,6 @@ class Category:
         self.products = products
         Category.category_count += 1
         Category.product_count += len(self.products)
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.product_count} шт."
