@@ -60,5 +60,12 @@ class Category:
             list_of_prod.append(f"{i.name}, {i.price} руб. Остаток: {i.quantity} шт.")
         return list_of_prod
 
+    @property
+    def quant_count(self):
+        all_prods_quant = 0
+        for i in self.__products:
+            all_prods_quant += i.quantity
+        return all_prods_quant
+
     def __str__(self):
-        return f"{self.name}, количество продуктов: {self.product_count} шт."
+        return f"{self.name}, количество продуктов: {self.quant_count} шт."
