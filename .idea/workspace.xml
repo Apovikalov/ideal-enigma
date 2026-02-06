@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08bd48e1-2066-4933-a240-6604067983bd" name="Changes" comment="Домашка 15.1 (2)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_classes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
