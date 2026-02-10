@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes import Category, Product, Smartphone, LawnGrass
+from src.classes import Category, LawnGrass, Product, Smartphone
 
 
 @pytest.fixture
@@ -51,7 +51,7 @@ def test_add(smartphone_1, smartphone_2):
     assert smartphone_1 + smartphone_2 == 2580000
 
 
-def test_add_type_error():
+def test_add_type_error(smartphone_1, grass_1):
     with pytest.raises(TypeError):
         test_add(smartphone_1, grass_1)
 
@@ -88,7 +88,7 @@ def test_add_product(category_1: Category):
     assert len(category_1.products) == 3
 
 
-def test_add_product_type_error():
+def test_add_product_type_error(category_1):
     with pytest.raises(TypeError):
         test_add_product(category_1, "Not a product")
 
