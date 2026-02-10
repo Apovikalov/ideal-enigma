@@ -1,32 +1,54 @@
 import pytest
 
-from src.classes import Category, Product
+from src.classes import Category, Product, Smartphone, LawnGrass
 
 
 @pytest.fixture
-def product_1():
-    return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+def smartphone_1():
+    return Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5,
+                      95.5, "S23 Ultra", 256, "Серый")
 
 
 @pytest.fixture
-def product_2():
-    return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+def smartphone_2():
+    return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8,
+                      98.2, "15", 512, "Gray space")
 
 
-def test_init_product(product_1):
-    assert product_1.name == "Samsung Galaxy S23 Ultra"
-    assert product_1.description == "256GB, Серый цвет, 200MP камера"
-    assert product_1.price == 180000.0
-    assert product_1.quantity == 5
+@pytest.fixture
+def grass_1():
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20,
+                     "Россия", "7 дней", "Зеленый")
 
 
-def test_str_product(product_1, product_2):
-    assert str(product_1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
-    assert str(product_2) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
+def test_init_smartphone(smartphone_1):
+    assert smartphone_1.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone_1.description == "256GB, Серый цвет, 200MP камера"
+    assert smartphone_1.price == 180000.0
+    assert smartphone_1.quantity == 5
+    assert smartphone_1.efficiency == 95.5
+    assert smartphone_1.model == "S23 Ultra"
+    assert smartphone_1.memory == 256
+    assert smartphone_1.color == "Серый"
 
 
-def test_add(product_1, product_2):
-    assert product_1 + product_2 == 2580000
+def test_init_grass(grass_1):
+    assert grass_1.name == "Газонная трава"
+    assert grass_1.description == "Элитная трава для газона"
+    assert grass_1.price == 500.0
+    assert grass_1.quantity == 20
+    assert grass_1.country == "Россия"
+    assert grass_1.germination_period == "7 дней"
+    assert grass_1.color == "Зеленый"
+
+
+def test_str_product(smartphone_1, smartphone_2):
+    assert str(smartphone_1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert str(smartphone_2) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
+
+
+def test_add(smartphone_1, smartphone_2):
+    assert smartphone_1 + smartphone_2 == 2580000
 
 
 @pytest.fixture
@@ -54,7 +76,8 @@ def test_str_category(category_1):
 
 
 def test_add_product(category_1: Category):
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    product3 = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14,
+                          90.3, "Note 11", 1024, "Синий")
     assert len(category_1.products) == 2
     category_1.add_product(product3)
     assert len(category_1.products) == 3
