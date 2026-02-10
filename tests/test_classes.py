@@ -51,6 +51,11 @@ def test_add(smartphone_1, smartphone_2):
     assert smartphone_1 + smartphone_2 == 2580000
 
 
+def test_add_type_error():
+    with pytest.raises(TypeError):
+        test_add(smartphone_1, grass_1)
+
+
 @pytest.fixture
 def category_1():
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -81,6 +86,11 @@ def test_add_product(category_1: Category):
     assert len(category_1.products) == 2
     category_1.add_product(product3)
     assert len(category_1.products) == 3
+
+
+def test_add_product_type_error():
+    with pytest.raises(TypeError):
+        test_add_product(category_1, "Not a product")
 
 
 def test_new_product():
