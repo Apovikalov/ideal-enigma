@@ -2,27 +2,105 @@ class Product:
     """Класс для представления продукта"""
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, prod):
+        name = prod["name"]
+        description = prod["description"]
+        price = prod["price"]
+        quantity = prod["quantity"]
+        return cls(name, description, price, quantity)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, val):
+        if val <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = val
+
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        if self.__class__ == other.__class__:
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError
+
+
+class Smartphone(Product):
+    efficiency: float
+    model: str
+    memory: int
+    color: str
+
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    country: str
+    germination_period: str
+    color: str
+
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
 
 
 class Category:
     """Класс для представления категории"""
     name: str
     description: str
-    products: list
+    __products: list
     category_count = 0
     product_count = 0
 
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
         Category.category_count += 1
-        Category.product_count += len(self.products)
+        Category.product_count += len(self.__products)
+
+    def add_product(self, product):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
+
+    @property
+    def products(self):
+        list_of_prod = []
+        for i in self.__products:
+            list_of_prod.append(f"{i.name}, {i.price} руб. Остаток: {i.quantity} шт.")
+        return list_of_prod
+
+    @property
+    def quant_count(self):
+        all_prods_quant = 0
+        for i in self.__products:
+            all_prods_quant += i.quantity
+        return all_prods_quant
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.quant_count} шт."
