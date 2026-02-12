@@ -3,11 +3,8 @@ from abc import ABC, abstractmethod
 class BaseProduct(ABC):
 
     @abstractmethod
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
+    def __init__(self):
+        pass
 
 class Product(BaseProduct):
     """Класс для представления продукта"""
@@ -52,6 +49,7 @@ class Product(BaseProduct):
 
 
 class Smartphone(Product):
+    """Смартфоны"""
     efficiency: float
     model: str
     memory: int
@@ -66,6 +64,7 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
+    """Трава газонная"""
     country: str
     germination_period: str
     color: str
