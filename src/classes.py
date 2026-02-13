@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseProduct(ABC):
 
     @abstractmethod
@@ -8,6 +9,14 @@ class BaseProduct(ABC):
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, prod):
+        name = prod["name"]
+        description = prod["description"]
+        price = prod["price"]
+        quantity = prod["quantity"]
+        return cls(name, description, price, quantity)
 
     @property
     def price(self):
@@ -20,6 +29,16 @@ class BaseProduct(ABC):
         else:
             self.__price = val
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        if self.__class__ == other.__class__:
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError
+
+
 class MixinLog:
 
     def __init__(self, name, description, price, quantity):
@@ -29,7 +48,8 @@ class MixinLog:
         self.quantity = quantity
 
     def __repr__(self):
-        return f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
+        return f"Product({self.name}, {self.description}, {self.__price}, {self.quantity})"
+
 
 class Product(BaseProduct, MixinLog):
     """Класс для представления продукта"""
@@ -40,27 +60,6 @@ class Product(BaseProduct, MixinLog):
 
     def __init__(self, name, description, price, quantity):
         super().__init__(name, description, price, quantity)
-
-    @classmethod
-    def new_product(cls, prod):
-        name = prod["name"]
-        description = prod["description"]
-        price = prod["price"]
-        quantity = prod["quantity"]
-        return cls(name, description, price, quantity)
-
-
-
-
-
-    def __str__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
-
-    def __add__(self, other):
-        if self.__class__ == other.__class__:
-            return self.__price * self.quantity + other.__price * other.quantity
-        else:
-            raise TypeError
 
 
 class Smartphone(Product):

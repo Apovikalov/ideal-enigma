@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08bd48e1-2066-4933-a240-6604067983bd" name="Changes" comment="Домашка 16.2">
+    <list default="true" id="08bd48e1-2066-4933-a240-6604067983bd" name="Changes" comment="Домашка 16.2 (ABC, Mixin)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770906271794</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Домашка 16.2 (ABC, Mixin)">
+      <option name="closed" value="true" />
+      <created>1770966912940</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770966912940</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,6 +244,7 @@
     <MESSAGE value="Домашка 16.1 (4)" />
     <MESSAGE value="Домашка 16.1" />
     <MESSAGE value="Домашка 16.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Домашка 16.2" />
+    <MESSAGE value="Домашка 16.2 (ABC, Mixin)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Домашка 16.2 (ABC, Mixin)" />
   </component>
 </project>
