@@ -3,29 +3,11 @@ from abc import ABC, abstractmethod
 class BaseProduct(ABC):
 
     @abstractmethod
-    def __init__(self):
-        pass
-
-class Product(BaseProduct):
-    """Класс для представления продукта"""
-    name: str
-    description: str
-    __price: float
-    quantity: int
-
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
-
-    @classmethod
-    def new_product(cls, prod):
-        name = prod["name"]
-        description = prod["description"]
-        price = prod["price"]
-        quantity = prod["quantity"]
-        return cls(name, description, price, quantity)
 
     @property
     def price(self):
@@ -37,6 +19,39 @@ class Product(BaseProduct):
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = val
+
+class MixinLog:
+
+    def __init__(self, name, description, price, quantity):
+        self.name = name
+        self.description = description
+        self.__price = price
+        self.quantity = quantity
+
+    def __repr__(self):
+        return f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
+
+class Product(BaseProduct, MixinLog):
+    """Класс для представления продукта"""
+    name: str
+    description: str
+    __price: float
+    quantity: int
+
+    def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+
+    @classmethod
+    def new_product(cls, prod):
+        name = prod["name"]
+        description = prod["description"]
+        price = prod["price"]
+        quantity = prod["quantity"]
+        return cls(name, description, price, quantity)
+
+
+
+
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
