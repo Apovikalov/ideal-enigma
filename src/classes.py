@@ -47,8 +47,12 @@ class MixinLog:
         self.__price = price
         self.quantity = quantity
 
+    @property
+    def price(self):
+        return self.__price
+
     def __repr__(self):
-        return f"Product({self.name}, {self.description}, {self.__price}, {self.quantity})"
+        return f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
 
 
 class Product(BaseProduct, MixinLog):
