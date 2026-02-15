@@ -4,53 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="702041aa-3a74-4ac1-a38c-8dbe7f86f8f8" name="Changes" comment="Домашка 14.1" />
+    <list default="true" id="08bd48e1-2066-4933-a240-6604067983bd" name="Changes" comment="Домашка 16.2 (3)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop_3" />
+        <entry key="$PROJECT_DIR$" value="feature_project_3_4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Apovikalov&quot;
+  }
 }</component>
-  <component name="ProjectId" id="38k6zn4vK6eAOu6lrx2EgY0a133" />
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Apovikalov/ideal-enigma&quot;,
+    &quot;accountId&quot;: &quot;402fa67a-ab23-4f7d-b2e0-3af5646a0dc5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="390w43dpNH8tJWjBfdYcfwW9nHA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Python tests in test_classes.py.executor": "Run",
-    "Python.classes.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature__project__3",
-    "last_opened_file_path": "C:/PythonProject3/tests"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test_classes.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.classes.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature__project__3__5&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PythonProject3/src&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\PythonProject3\tests" />
       <recent name="C:\PythonProject3\src" />
-      <recent name="C:\PythonProject3" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -61,38 +68,174 @@
     </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="702041aa-3a74-4ac1-a38c-8dbe7f86f8f8" name="Changes" comment="" />
-      <created>1769331488897</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1769331488897</updated>
-    </task>
-    <task id="LOCAL-00001" summary="First Commit">
+    <task id="LOCAL-00001" summary="Домашка 14.1">
       <option name="closed" value="true" />
-      <created>1769333589227</created>
+      <created>1769752465640</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1769333589227</updated>
+      <updated>1769752465640</updated>
     </task>
-    <task id="LOCAL-00002" summary="Домашка 14.1">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08bd48e1-2066-4933-a240-6604067983bd" name="Changes" comment="Домашка 14.1" />
+      <created>1769846128043</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769846128043</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Домашка 14.2 (1)">
       <option name="closed" value="true" />
-      <created>1769748345694</created>
+      <created>1769854300928</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1769748345694</updated>
+      <updated>1769854300928</updated>
     </task>
-    <task id="LOCAL-00003" summary="Домашка 14.1">
+    <task id="LOCAL-00003" summary="Домашка 14.2 (2)">
       <option name="closed" value="true" />
-      <created>1769748525500</created>
+      <created>1769936878257</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1769748525500</updated>
+      <updated>1769936878257</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Домашка 14.2 (3, 4)">
+      <option name="closed" value="true" />
+      <created>1769961188798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769961188798</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Домашка 15.1">
+      <option name="closed" value="true" />
+      <created>1770098339608</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770098339608</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Домашка 15.1">
+      <option name="closed" value="true" />
+      <created>1770098440207</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770098440207</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Домашка 15.1 (1)">
+      <option name="closed" value="true" />
+      <created>1770103808850</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770103808850</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Домашка 15.1 (2)">
+      <option name="closed" value="true" />
+      <created>1770272741587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770272741587</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Домашка 15.1">
+      <option name="closed" value="true" />
+      <created>1770382973186</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770382973186</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Домашка 16.1 (1, 2)">
+      <option name="closed" value="true" />
+      <created>1770625144113</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770625144113</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Домашка 16.1 (3)">
+      <option name="closed" value="true" />
+      <created>1770639739095</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770639739095</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Домашка 16.1 (4)">
+      <option name="closed" value="true" />
+      <created>1770715915703</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770715915703</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Домашка 16.1">
+      <option name="closed" value="true" />
+      <created>1770724584551</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770724584551</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Домашка 16.1">
+      <option name="closed" value="true" />
+      <created>1770725045668</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1770725045668</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Домашка 16.1">
+      <option name="closed" value="true" />
+      <created>1770730428010</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770730428010</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Домашка 16.2">
+      <option name="closed" value="true" />
+      <created>1770898147875</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770898147875</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Домашка 16.2">
+      <option name="closed" value="true" />
+      <created>1770906271794</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1770906271794</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Домашка 16.2 (ABC, Mixin)">
+      <option name="closed" value="true" />
+      <created>1770966912940</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770966912940</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Домашка 16.2 (1, 2)">
+      <option name="closed" value="true" />
+      <created>1770985533822</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1770985533822</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Домашка 16.2 (3)">
+      <option name="closed" value="true" />
+      <created>1771060426175</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1771060426175</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,8 +250,21 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First Commit" />
     <MESSAGE value="Домашка 14.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Домашка 14.1" />
+    <MESSAGE value="Домашка 14.2 (1)" />
+    <MESSAGE value="Домашка 14.2 (2)" />
+    <MESSAGE value="Домашка 14.2 (3, 4)" />
+    <MESSAGE value="Домашка 15.1 (1)" />
+    <MESSAGE value="Домашка 15.1 (2)" />
+    <MESSAGE value="Домашка 15.1" />
+    <MESSAGE value="Домашка 16.1 (1, 2)" />
+    <MESSAGE value="Домашка 16.1 (3)" />
+    <MESSAGE value="Домашка 16.1 (4)" />
+    <MESSAGE value="Домашка 16.1" />
+    <MESSAGE value="Домашка 16.2" />
+    <MESSAGE value="Домашка 16.2 (ABC, Mixin)" />
+    <MESSAGE value="Домашка 16.2 (1, 2)" />
+    <MESSAGE value="Домашка 16.2 (3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Домашка 16.2 (3)" />
   </component>
 </project>
