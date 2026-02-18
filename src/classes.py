@@ -8,7 +8,12 @@ class BaseProduct(ABC):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity != 0:
+            self.quantity = quantity
+        else:
+            print("Товар с нулевым количеством не может быть добавлен")
+            raise ValueError
+
 
     @classmethod
     def new_product(cls, prod):
