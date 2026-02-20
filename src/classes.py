@@ -121,6 +121,17 @@ class Category:
         else:
             raise TypeError
 
+    def middle_price(self):
+        mid_price = 0
+        try:
+            for i in self.__products:
+                mid_price += i.price
+            mid_price /= len(self.__products)
+        except ZeroDivisionError:
+            return 0
+        else:
+            return mid_price
+
     @property
     def products(self):
         list_of_prod = []
