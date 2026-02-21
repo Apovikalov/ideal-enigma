@@ -8,12 +8,11 @@ class BaseProduct(ABC):
         self.name = name
         self.description = description
         self.__price = price
-        if quantity != 0:
-            self.quantity = quantity
-        else:
+        if quantity == 0:
             print("Товар с нулевым количеством не может быть добавлен")
             raise ValueError
-
+        else:
+            self.quantity = quantity
 
     @classmethod
     def new_product(cls, prod):
@@ -50,7 +49,11 @@ class MixinLog:
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity == 0:
+            print("Товар с нулевым количеством не может быть добавлен")
+            raise ValueError
+        else:
+            self.quantity = quantity
 
     @property
     def price(self):

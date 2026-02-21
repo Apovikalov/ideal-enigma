@@ -21,6 +21,12 @@ def grass_1():
                      "Россия", "7 дней", "Зеленый")
 
 
+@pytest.fixture
+def product_0():
+    with pytest.raises(ValueError):
+        return Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+
+
 def test_init_smartphone(smartphone_1):
     assert smartphone_1.name == "Samsung Galaxy S23 Ultra"
     assert smartphone_1.description == "256GB, Серый цвет, 200MP камера"
