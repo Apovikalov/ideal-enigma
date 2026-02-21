@@ -77,6 +77,13 @@ def category_1():
                     [product1, product2])
 
 
+@pytest.fixture
+def category_0():
+    return Category("Без имени",
+                    "Нет",
+                    [])
+
+
 def test_init_category(category_1):
     assert category_1.name == "Смартфоны"
     assert category_1.description == ("Смартфоны, как средство не только коммуникации, "
@@ -92,7 +99,7 @@ def test_str_category(category_1):
 
 
 def test_add_product(category_1: Category):
-    product3 = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14,
+    product3 = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 30000.0, 14,
                           90.3, "Note 11", 1024, "Синий")
     assert len(category_1.products) == 2
     category_1.add_product(product3)
@@ -102,6 +109,14 @@ def test_add_product(category_1: Category):
 def test_add_product_type_error(category_1):
     with pytest.raises(TypeError):
         test_add_product(category_1, "Not a product")
+
+
+def test_middle_price(category_1):
+    assert category_1.middle_price() == 195000
+
+
+def test_middle_price_error(category_0):
+    assert category_0.middle_price() == 0
 
 
 def test_new_product():
